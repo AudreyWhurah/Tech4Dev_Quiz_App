@@ -1,3 +1,6 @@
+/* The provided JavaScript code is part of a quiz application named "Tech_4_Dev Quiz App." Below is an explanation of the code sections:
+*/
+//below are the Quiz data
 const quizData = [
     {
       question: 'How many bits make a byte?',
@@ -66,18 +69,22 @@ const quizData = [
     },
   ];
   
+  //Below shows the element references, These lines fetch references to HTML elements by their IDs. These elements are used to dynamically update the content of the quiz and display results.
   const quizContainer = document.getElementById('quiz');
   const resultContainer = document.getElementById('result');
   const submitButton = document.getElementById('submit');
   const retryButton = document.getElementById('retry');
   const showAnswerButton = document.getElementById('showAnswer');
  
+  //These variables below keep track of the current question number, the user's score, and a collection of incorrectly answered questions.
   let currentQuestion = 0;
   let score = 0;
   let incorrectAnswers = [];
 
 
-  
+  // Function to shuffle the order of options in each question
+  // Uses the Fisher-Yates algorithm
+  // Example: shuffleArray([1, 2, 3, 4]) => [3, 1, 4, 2]
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -85,6 +92,7 @@ const quizData = [
     }
   }
   
+  // Function to display the current question and its options
   function displayQuestion() {
     const questionData = quizData[currentQuestion];
   
@@ -113,6 +121,7 @@ const quizData = [
       option.appendChild(optionText);
       optionsElement.appendChild(option);
 
+      // Function to highlight correct and incorrect options after user selection
       radio.addEventListener('change', function () {
         highlightOptions(questionData.answer, radio);
       });
@@ -138,6 +147,7 @@ const quizData = [
       });
   }
   
+  // Function to check the user's selected answer, update score, and proceed to the next question
   function checkAnswer() {
     console.log("here");
     const selectedOption = document.querySelector('input[name="quiz"]:checked');
@@ -164,6 +174,7 @@ const quizData = [
     }
   }
   
+  // Function to display the final result after completing the quiz
   function displayResult() {
     quizContainer.style.display = 'none';
     submitButton.style.display = 'none';
@@ -184,6 +195,7 @@ const quizData = [
     displayQuestion();
   }
   
+  // Function to display correct and incorrect answers after completing the quiz
   function showAnswer() {
     quizContainer.style.display = 'none';
     submitButton.style.display = 'none';
@@ -208,11 +220,15 @@ const quizData = [
     `;
   }
   
+  //These lines add event listeners to buttons, triggering specific functions when the buttons are clicked.
   submitButton.addEventListener('click', checkAnswer);
   retryButton.addEventListener('click', retryQuiz);
   showAnswerButton.addEventListener('click', showAnswer);
   displayQuestion();
 
+  // Code for a countdown timer, This section handles the countdown timer functionality, displaying the time remaining for the quiz.
+
+//The code combines these elements to create an interactive quiz application with score tracking, result display, and a countdown timer. Make sure to include associated HTML and CSS files for a complete functioning quiz app
 var now = new Date()
 now.setMinutes(now.getMinutes()+ 10)
 const date = now.getTime()
