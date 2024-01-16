@@ -1,4 +1,5 @@
 # Tech4Dev_Quiz_App
+# see below explanation of the HTML file but you will see the CSS and Javascript comment inline(on the sections of the code)
 
 # HTML Structure
 
